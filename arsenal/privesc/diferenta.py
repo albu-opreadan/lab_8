@@ -12,3 +12,11 @@ noi = acum - baza
 print(len(noi), "SUID noi fata de sistemul curat")
 for c in sorted(noi):
     print(" ", c)
+
+
+
+from enumm import nume, GTFO
+
+risc = {nume(c): ("mare" if nume(c) in GTFO else "normal") for c in noi}
+periculoase = [c for c in sorted(noi) if nume(c) in GTFO]
+print("periculoase NOI:", periculoase)
