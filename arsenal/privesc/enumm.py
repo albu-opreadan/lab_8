@@ -18,4 +18,24 @@ def nume(cale):
     return cale.rsplit("/", 1)[-1]
 
 nume_unice = {nume(c) for c in cai} 
-print("SUID distincte:", len(nume_unice))
+#print("SUID distincte:", len(nume_unice))
+
+
+GTFO = {"find", "vim.basic", "vim", "nmap", "cp", "bash",
+        "less", "awk", "python3", "perl"}
+
+def suid_constatari(cale):
+    cai = citeste_linii(cale)
+    constatari = []
+    for c in sorted(set(cai)):
+        constatari.append({
+            "cale": c,
+            "nume": nume(c),
+            "risc": "mare" if nume(c) in GTFO else "normal"
+        })
+    return constatari
+
+suid = suid_constatari("start/suid.txt")
+mari = [c for c in suid if c["risc"] == "mare"]
+print(len(suid), "SUID,", len(mari), "cu risc mare")
+print(sorted(c["nume"] for c in mari))
