@@ -7,3 +7,8 @@ def cai(fisier):
 baza = cai("start/baza_suid.txt")
 acum = cai("start/suid.txt")
 print("baza:", len(baza), " acum:", len(acum))
+
+noi = acum - baza
+print(len(noi), "SUID noi fata de sistemul curat")
+for c in sorted(noi):
+    print(" ", c)

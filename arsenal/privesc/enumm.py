@@ -37,8 +37,8 @@ def suid_constatari(cale):
 
 suid = suid_constatari("start/suid.txt")
 mari = [c for c in suid if c["risc"] == "mare"]
-print(len(suid), "SUID,", len(mari), "cu risc mare")
-print(sorted(c["nume"] for c in mari))
+#print(len(suid), "SUID,", len(mari), "cu risc mare")
+#print(sorted(c["nume"] for c in mari))
 
 
 def sudo_constatari(cale):
