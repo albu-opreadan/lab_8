@@ -51,3 +51,22 @@ def sudo_constatari(cale):
             "risc": "mare" if "NOPASSWD" in drept else "normal"
         })
     return out
+
+def cron_constatari(cale):
+    out = []
+    for ln in citeste_linii(cale):
+        campuri = ln.split()
+        user = campuri[5]
+        comanda = " ".join(campuri[6:])
+        out.append({
+            "user": user,
+            "comanda": comanda
+        })
+    return out
+
+def enumereaza(d):
+    return {
+        "suid": suid_constatari(os.path.join(d, "suid.txt")),
+        "sudo": sudo_constatari(os.path.join(d, "sudo.txt")),
+        "cron": cron_constatari(os.path.join(d, "crontab.txt")),
+    }
