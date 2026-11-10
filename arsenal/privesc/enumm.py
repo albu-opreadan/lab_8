@@ -39,3 +39,15 @@ suid = suid_constatari("start/suid.txt")
 mari = [c for c in suid if c["risc"] == "mare"]
 print(len(suid), "SUID,", len(mari), "cu risc mare")
 print(sorted(c["nume"] for c in mari))
+
+
+def sudo_constatari(cale):
+    out = []
+    for ln in citeste_linii(cale):
+        user, drept = ln.split(" : ", 1)
+        out.append({
+            "user": user.strip(),
+            "drept": drept.strip(),
+            "risc": "mare" if "NOPASSWD" in drept else "normal"
+        })
+    return out
